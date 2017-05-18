@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline';img-src *; style-src * 'self' 'unsafe-inline'; media-src *" />
+	<script src="js/script.js"></script>
+	<script src="cordova.js"></script>
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body onload="init()">
+	<div data-role="page" id="padgeOne">
+
+
+		<div data-role="header">
+			<h1>Program TV</h1>
+			<form class="ui-filterable">
+				<input id="settings" type="text" placeholder="Podaj adres">
+			</form>
+		</div>
+
+		<div data-role="main" class="ui-content">
+			<form class="ui-filterable">
+				<input id="myFilter" data-type="search">
+				<input id="searchButton" type="button" value="Szukaj">
+			</form>
+			<div id="result">
+				<ul>
+					<li class="wiersz">
+						<a href="#pageTwo">
+							<div id="movie1" class="filmStyle">
+							</div>
+						</a>
+					</li>
+					<li class="wiersz">
+						<a href="#pageTwo">
+							<div id="movie2" class="filmStyle">
+							</div>
+						</a>
+					</li>
+					<li class="wiersz">
+						<a href="#pageTwo">
+							<div id="movie3" class="filmStyle">
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+
+	<div data-role="page" id="pageTwo">
+		<div data-role="header">
+			<h1>Program TV</h1>
+			<div id="secondPage">
+				<h2 id="spTitle"> </h2>
+				<h5 id="spInfo"></h5>
+				<img id="picture"></img>
+				<h3>Opis</h3>
+				<p id="spDescription"></p>
+				<h3>Obsada</h3>
+				<ul id="actores"></ul>
+				<h3>Najbliższa Emisja</h3>
+				<img id="logo"></img>
+				<h6 id="emissionDate"></h6>
+				<input id="kalendarBtn" type="button" value="Dodaj przypomnienie">
+			</div>
+		</div>
+</body>
+
+</html>

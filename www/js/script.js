@@ -18,7 +18,7 @@ function onDeviceReady() {
 function prepareSearchBTN() {
   document.querySelector("#searchButton").addEventListener("click", function() {
     pobierzAdress();
-    // var zmiena=checkConnection();
+    var zmiena=checkConnection();
     pobierzListeFilmow();
   })
 }
@@ -54,22 +54,27 @@ function pobierzListeFilmow() {
 function pokazListeFilmow(msg) {
   listaFilmow = msg;
   var wiersze = document.querySelectorAll(".filmStyle");
+  $('#result').addClass("active"); // MC:dodaje klase do result jak ma już jakieś elementy
   for (var i = 0; i < wiersze.length; i++) {
     var kontener = document.createDocumentFragment();
     var zdjecie = document.createElement("img");
+    var wiecej = document.createElement("div"); // MC:jeszcze jeden div
+    wiecej.className = "filmWiecej"; 
     zdjecie.setAttribute("src", msg[i].linkDoZdjecia);
     kontener.appendChild(zdjecie);
     var tytul = document.createElement("h3");
     tytul.appendChild(document.createTextNode(msg[i].movieTitle));
-    kontener.appendChild(tytul);
+    wiecej.appendChild(tytul);
     var dane = document.createElement("h5");
     dane.appendChild(document.createTextNode(msg[i].country + ", " + msg[i].releaseDate + ", " + msg[i].movieType));
-    kontener.appendChild(dane);
+    wiecej.appendChild(dane);
     var opis = document.createElement("p");
     opis.appendChild(document.createTextNode(msg[i].shortDescription));
-    kontener.appendChild(opis);
-    wiersze[i].appendChild(kontener);
+    wiecej.appendChild(opis);
 
+    kontener.appendChild(wiecej)
+    wiersze[i].textContent = ""; // MC: czyscimy div, żeby nie dodawać kolejnych elementów, a nadpisać obecne
+    wiersze[i].appendChild(kontener);
   }
 }
 //############################################################################
@@ -100,8 +105,11 @@ function wstawDetale() {
     default:
   }
 	var tytul = document.querySelector("#spTitle").appendChild(document.createTextNode(listaFilmow[selectedButton].movieTitle));
-	document.querySelector("#spInfo").appendChild(document.createTextNode(listaFilmow[selectedButton].country + ", "  +listaFilmow[selectedButton].releaseDate +
-	" <br>Gatunek: " + listaFilmow[selectedButton].movieType + ", Czas trwania: " + details.duration + "<br> Reżyseria: " + details.director));
+	document.querySelector("#spInfo").appendChild(document.createTextNode(listaFilmow[selectedButton].country + ", "  +listaFilmow[selectedButton].releaseDate))
+  document.querySelector("#spInfo").appendChild(document.createElement('br'));
+  document.querySelector("#spInfo").appendChild(document.createTextNode("Gatunek: " + listaFilmow[selectedButton].movieType + ", Czas trwania: " + details.duration))
+  document.querySelector("#spInfo").appendChild(document.createElement('br'));
+  document.querySelector("#spInfo").appendChild(document.createTextNode("Reżyseria: " + details.director))
 	document.querySelector("#picture").setAttribute("src", listaFilmow[selectedButton].linkDoZdjecia);
 	document.querySelector("#spDescription").appendChild(document.createTextNode(details.longDescription));
 	var kontener = document.createDocumentFragment();

@@ -1,20 +1,28 @@
 html,
 ul {
-  list-style-type: none;
+    list-style-type: none;
 }
+
 a:link {
-  text-decoration: none;
-    color:  black;
+    text-decoration: none;
+    text-shadow: none;
+    color: black;
 }
+
 a:visited {
-  text-decoration: none;
-    color:  black;
+    text-decoration: none;
+    text-shadow: none;
+    color: black;
 }
+
 a:hover {
-  text-decoration: none;
-    color:  black;
+    text-decoration: none;
+    text-shadow: none;
+    color: black;
 }
+
 a:active {
-  text-decoration: none;
+    text-decoration: none;
+    text-shadow: none;
     color: black;
 }

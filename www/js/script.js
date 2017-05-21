@@ -18,7 +18,7 @@ function onDeviceReady() {
 function prepareSearchBTN() {
   document.querySelector("#searchButton").addEventListener("click", function() {
     pobierzAdress();
-    var zmiena=checkConnection();
+    // var zmiena=checkConnection();
     pobierzListeFilmow();
   })
 }
